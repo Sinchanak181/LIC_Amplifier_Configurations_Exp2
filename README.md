@@ -256,3 +256,150 @@ GBP ≈ 2.13 GHz
 - Gain decreases at high frequency due to parasitic capacitances.
 - Bandwidth ≈ 219 MHz.
 - Gain-Bandwidth Product ≈ 2.13 GHz.
+
+# 🚀 CIRCUIT 2  
+## Common Source Amplifier with NMOS Current Source Load
+
+---
+
+## 🔷 Design Specifications
+
+| Parameter | Value |
+|------------|--------|
+| VDD | 1.5 V |
+| Power Constraint | ≤ 0.5 mW |
+| Channel Length (L) | 180 nm |
+| Load Capacitor (CL) | 1 pF |
+| Assumed Overdrive (Vov) | 0.25 V |
+
+---
+
+## 🔷 DC Bias Design
+
+### 1️⃣ Drain Current
+
+\[
+I_D = \frac{P}{V_{DD}} = \frac{0.5mW}{1.5V}
+\]
+
+\[
+I_D = 0.333 mA
+\]
+
+---
+
+### 2️⃣ NMOS Current Source (M3)
+
+\[
+V_{GS3} = V_{ov} + V_{th}
+\]
+
+\[
+V_{GS3} = 0.25 + 0.366 = 0.61 V
+\]
+
+\[
+V_{B2} = 0.61 V
+\]
+
+To maintain saturation:
+
+\[
+V_{DS3} \ge V_{ov}
+\]
+
+\[
+V_{S2} = 0.25 V
+\]
+
+---
+
+### 3️⃣ NMOS Amplifier (M2)
+
+\[
+V_{GS2} = V_{in} - V_{S2}
+\]
+
+\[
+0.61 = V_{in} - 0.25
+\]
+
+\[
+V_{in} = 0.86 V
+\]
+
+---
+
+### 4️⃣ PMOS Load (M1)
+
+\[
+V_{SG1} = V_{ov} + |V_{thp}|
+\]
+
+\[
+V_{SG1} = 0.25 + 0.39 = 0.64 V
+\]
+
+\[
+V_{B1} = V_{DD} - V_{SG1}
+\]
+
+\[
+V_{B1} = 1.5 - 0.64 = 0.86 V
+\]
+
+---
+
+### 5️⃣ Output Voltage Range
+
+For M2 saturation:
+
+\[
+V_{out} \ge 0.5 V
+\]
+
+For M1 saturation:
+
+\[
+V_{out} \le 1.25 V
+\]
+
+Therefore,
+
+\[
+0.5V \le V_{out} \le 1.25V
+\]
+
+For maximum symmetrical swing:
+
+\[
+V_{out} \approx 0.88 V
+\]
+
+---
+
+## 🔷 Initial Width Calculation
+
+Using:
+
+\[
+I_D = \frac{1}{2} k' \frac{W}{L} (V_{ov})^2
+\]
+
+| Transistor | Type | Initial Width |
+|------------|------|---------------|
+| M1 | PMOS | 19.7 µm |
+| M2 | NMOS | 8.3 µm |
+| M3 | NMOS | 8.3 µm |
+
+---
+
+## 🔷 Circuit Schematic
+
+![Circuit 2 Schematic](circuit2.png)
+
+---
+
+## 🔷 DC Operating Point Screenshot
+
+![Circuit 2 DC](circuit2_dc.png)
