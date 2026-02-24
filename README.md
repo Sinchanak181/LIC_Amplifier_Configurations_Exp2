@@ -1,4 +1,4 @@
-# LIC_Amplifier_Configurations_Experiment2
+# LIC_Amplifier_Configurations_Experiment-2
 Design and comparative analysis of three amplifier configurations using 180nm CMOS in LTspice.
 ## AIM
 
