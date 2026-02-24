@@ -216,3 +216,43 @@ Av(dB) ≈ 17.69 dB
 
 The difference occurs due to bias-dependent output resistance and accurate device modeling in LTspice.
 Av(dB) ≈ 17.69 dB
+---
+
+## AC Analysis
+
+AC simulation command used:
+
+.ac dec 10 0.1 100M
+
+The frequency response was obtained to extract midband gain, 3dB bandwidth, and high-frequency cutoff.
+### AC Frequency Response
+
+![Circuit 1 AC Response](Circuit1_AC_Response.png)
+
+### Extracted Parameters
+
+| Parameter | Value |
+|-----------|-------|
+| Midband Gain | 19.75 dB |
+| 3dB Gain | 16.75 dB |
+| Bandwidth (fH) | 219.12 MHz |
+
+Bandwidth is determined at the frequency where gain drops by 3 dB from midband value.
+
+### Gain Bandwidth Product (GBP)
+
+Midband gain (linear):
+
+Av = 10^(19.75 / 20)  
+Av ≈ 9.72  
+
+GBP = Av × Bandwidth  
+
+GBP = 9.72 × 219.12 MHz  
+GBP ≈ 2.13 GHz
+### Observation
+
+- Amplifier shows flat midband gain region.
+- Gain decreases at high frequency due to parasitic capacitances.
+- Bandwidth ≈ 219 MHz.
+- Gain-Bandwidth Product ≈ 2.13 GHz.
