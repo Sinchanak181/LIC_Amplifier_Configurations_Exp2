@@ -102,14 +102,117 @@ RS ≈ 598.8 Ω
 | RS | 598.8 Ω |
 
 The above calculations ensure proper DC biasing and saturation region operation.
-
+## DC Simulation Results
 ![Circuit 1 DC Operating Point](Circuit1_DC_OperatingPoint.png)
 
 ### Observations
-
 - ID(M1) ≈ 0.335 mA  
 - ID(M2) ≈ 0.335 mA  
 - Vout ≈ 0.946 V  
 - Source voltage ≈ 0.20 V  
 
 The simulated drain current matches the calculated value (0.334 mA), confirming correct DC biasing.
+### Width Tuning and Validation
+
+| Parameter | Calculated | Final (Simulated) |
+|------------|------------|------------------|
+| Wn | 8.36 µm | 48.32 µm |
+| Wp | 19.7 µm | 62.286 µm |
+
+**Reason for Increase in Width:**
+
+- Hand calculation assumes ideal square-law MOSFET model.
+- 180nm model includes mobility degradation and short channel effects.
+- Effective transconductance is lower in practical model.
+- Larger W is required to maintain ID ≈ 0.334 mA.
+- Width adjustment ensures proper Q-point and saturation region operation.
+
+  ---
+
+## Transient Analysis
+
+A sinusoidal input signal was applied at the gate terminal:
+
+Vin = SINE (0.9 10m 1k)
+
+Transient command used:
+
+.tran 5m
+### Input Waveform (Vin)
+
+![Circuit 1 Input](Circuit1_Vin.png)
+
+---
+
+### Output Waveform (Vout)
+
+![Circuit 1 Output](Circuit1_Vout.png)
+
+---
+
+### Combined Input and Output Waveforms
+
+![Circuit 1 Combined Waveform](Circuit1_Vin_Vout.png)
+
+---
+
+## Gain Analysis
+
+### 1️⃣ Practical Gain (From Transient Analysis)
+
+Measured from waveform:
+
+Vout(max) = 1.0873 V  
+Vout(min) = 0.84293 V  
+
+Vin(max) = 0.81999 V  
+Vin(min) = 0.800 V  
+
+Vout(pp) = 0.24437 V  
+Vin(pp) = 0.01999 V  
+
+Av (practical) = 0.24437 / 0.01999  
+Av = 9.723  
+
+Gain (dB):
+
+Av(dB) = 20 log(9.723)  
+Av(dB) = 19.75 dB  
+
+---
+
+### 2️⃣ Theoretical Gain
+
+For CS amplifier with PMOS active load and source degeneration:
+
+Av = − gm (ro1 || ro2) / (1 + gm RS)
+
+gm = 2ID / Vov  
+gm = (2 × 0.335 mA) / 0.25  
+gm = 2.68 mS  
+
+Assuming λ ≈ 0.2 V⁻¹ (180nm short channel)
+
+ro1 = ro2 ≈ 14.9 kΩ  
+
+ro(eq) = 7.45 kΩ  
+
+gmRS = 2.68×10⁻³ × 598.8 ≈ 1.60  
+
+Av (theoretical) ≈ 7.67  
+
+Gain (dB):
+
+Av(dB) ≈ 17.69 dB  
+
+---
+
+### 3️⃣ Gain Comparison
+
+| Type        | Gain (V/V) | Gain (dB) |
+|------------|------------|-----------|
+| Theoretical | 7.67      | 17.69 dB  |
+| Practical   | 9.723     | 19.75 dB  |
+
+The difference occurs due to bias-dependent output resistance and accurate device modeling in LTspice.
+Av(dB) ≈ 17.69 dB
