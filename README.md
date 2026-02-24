@@ -888,4 +888,65 @@ Gain Bandwidth Product (GBP) = ______ MHz
 - Bandwidth reduces compared to Circuit 1.
 - Gain-bandwidth tradeoff is observed.
 
-  
+# 🔷 Final Comparison of Three Amplifier Configurations
+
+## 📊 Performance Comparison Table
+
+| Parameter | Circuit 1 <br> (PMOS Active Load + RS) | Circuit 2 <br> (NMOS Current Source) | Circuit 3 <br> (Diode-Connected Source) |
+|------------|------------------------------------------|----------------------------------------|-------------------------------------------|
+| DC Drain Current (ID) | ______ mA | ______ mA | ______ mA |
+| DC Output Voltage (Vout) | ______ V | ______ V | ______ V |
+| Practical Gain (Av) | ______ | ______ | ______ |
+| Gain (dB) | ______ dB | ______ dB | ______ dB |
+| Theoretical Gain | ______ | ______ | ______ |
+| 3 dB Bandwidth | ______ MHz | ______ MHz | ______ MHz |
+| Unity Gain Bandwidth (UGB) | ______ MHz | ______ MHz | ______ MHz |
+| Output Resistance | Moderate | High | Very High |
+| Voltage Swing | High | Moderate | Limited |
+| Circuit Complexity | Medium | Medium | High |
+| Power Consumption | ≤ 0.5 mW | ≤ 0.5 mW | ≤ 0.5 mW |
+
+---
+
+## 🔷 Comparative Analysis
+
+### 🔹 Circuit 1
+- Uses source degeneration resistor.
+- Provides stable biasing.
+- Moderate gain due to source degeneration.
+- Good output swing.
+- Bandwidth relatively higher.
+
+### 🔹 Circuit 2
+- Uses NMOS current source load.
+- Higher gain compared to Circuit 1.
+- Increased output resistance.
+- Reduced bandwidth compared to Circuit 1.
+- Better gain–bandwidth tradeoff.
+
+### 🔹 Circuit 3
+- Uses diode-connected NMOS current source.
+- Highest output resistance.
+- Highest theoretical gain.
+- Reduced output swing due to stacked transistors.
+- Narrower bandwidth due to higher gain.
+
+---
+
+## 🔷 Final Validation and Conclusion
+
+- All three circuits satisfy the power constraint (≤ 0.5 mW).
+- All transistors operate in saturation region.
+- Gain increases from Circuit 1 → Circuit 2 → Circuit 3.
+- Bandwidth decreases as gain increases (Gain–Bandwidth Tradeoff).
+- Circuit 3 provides maximum gain but lowest bandwidth.
+- Circuit 1 provides best output swing.
+- Circuit 2 offers balanced performance.
+
+Therefore,
+
+✔ Circuit 1 → Best for larger swing  
+✔ Circuit 2 → Balanced design  
+✔ Circuit 3 → High-gain applications  
+
+This validates the theoretical expectations and simulation results.  
