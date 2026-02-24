@@ -437,3 +437,114 @@ M3: VDS ≥ Vov  ✔
 - Width decreased → Drain current decreases  
 - Tuning ensures accurate biasing and maximum output swing  
 - Final widths satisfy power constraint and saturation conditions
+
+## 🔷 Transient Analysis
+
+Transient command used:
+
+.tran 5m
+
+Input applied:
+
+Vin = SINE (0.86 10m 1k)
+
+Where:
+
+DC offset = 0.86 V  
+Amplitude = 10 mV  
+Frequency = 1 kHz  
+
+---
+
+## 🔷 Input Waveform (Vin)
+
+![Circuit 2 Input](circuit2_vin.png)
+
+---
+
+## 🔷 Output Waveform (Vout)
+
+![Circuit 2 Output](circuit2_vout.png)
+
+---
+
+## 🔷 Combined Input & Output Waveforms
+
+![Circuit 2 Combined](circuit2_combined.png)
+
+---
+
+## 🔷 Practical Gain (From Transient Analysis)
+
+From waveform measurements:
+
+Vout(max) = ______ V  
+Vout(min) = ______ V  
+
+Vin(max) = ______ V  
+Vin(min) = ______ V  
+
+Vout(pp) = Vout(max) − Vout(min) = ______ V  
+Vin(pp) = Vin(max) − Vin(min) = ______ V  
+
+Av (practical) = Vout(pp) / Vin(pp)
+
+Av = ______  
+
+Gain (dB) = 20 log(Av)
+
+Gain (dB) = ______ dB
+
+## 🔷 Theoretical Gain Calculation
+
+For Common Source amplifier with current source load:
+
+Av = - gm2 × (ro1 || ro2)
+
+---
+
+### Step 1: Calculate gm2
+
+gm = 2ID / Vov
+
+ID = 0.333 mA  
+Vov = 0.25 V  
+
+gm = (2 × 0.333 × 10⁻³) / 0.25  
+
+gm = 0.002664 S  
+
+gm ≈ 2.66 mS  
+
+---
+
+### Step 2: Output Resistance
+
+ro = 1 / (λ × ID)
+
+(Use λ value from model file or datasheet)
+
+Assume:
+
+ro1 = ______ Ω  
+ro2 = ______ Ω  
+
+Effective output resistance:
+
+ro(eff) = ro1 || ro2  
+
+ro(eff) = ______ Ω  
+
+---
+
+### Step 3: Theoretical Gain
+
+Av(theoretical) = gm × ro(eff)
+
+Av = 2.66 × 10⁻³ × ______  
+
+Av = ______  
+
+Gain (dB) = 20 log(Av)
+
+Gain (dB) = ______ dB
