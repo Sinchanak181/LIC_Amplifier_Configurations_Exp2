@@ -548,3 +548,74 @@ Av = ______
 Gain (dB) = 20 log(Av)
 
 Gain (dB) = ______ dB
+
+## 🔷 Validation: Reason for Variation Between Theoretical and Practical Gain
+
+- Theoretical calculation assumes ideal square-law MOSFET behavior.
+- Channel Length Modulation reduces effective output resistance (ro).
+- Short-channel effects are significant in 180nm technology.
+- Mobility degradation lowers effective transconductance (gm).
+- Parasitic capacitances are included in SPICE model but ignored in hand calculations.
+- Bias-dependent parameters (gm, ro) vary slightly during simulation.
+- Source/body effect slightly modifies threshold voltage.
+
+Thus, practical gain differs slightly from theoretical value due to real device non-idealities in CMOS technology.
+
+## 🔷 AC Analysis
+
+AC simulation command used:
+
+.ac dec 10 0.1 100M
+
+This analysis is performed to determine:
+
+- Midband Gain
+- 3 dB Bandwidth
+- Gain Bandwidth Product (GBP)
+
+---
+
+## 🔷 AC Frequency Response
+
+![Circuit 2 AC Response](circuit2_ac.png)
+
+---
+
+## 🔷 Extracted AC Parameters
+
+From the Bode plot:
+
+Midband Gain = ______ dB  
+
+3 dB Gain = (Midband Gain − 3) = ______ dB  
+
+Bandwidth (BW) = fH  ≈ ______ MHz  
+
+---
+
+## 🔷 Gain in Linear Scale
+
+Av (linear) = 10^(Gain_dB / 20)
+
+Av = 10^( ______ / 20 )
+
+Av = ______  
+
+---
+
+## 🔷 Gain Bandwidth Product (GBP)
+
+GBP = Av × BW  
+
+GBP = ______ × ______ MHz  
+
+GBP = ______ MHz  
+
+---
+
+## 🔷 AC Observation
+
+- Amplifier shows flat midband region.
+- Gain decreases at high frequency due to parasitic capacitances.
+- Current source load increases output resistance and improves gain.
+- Bandwidth depends on effective output resistance and load capacitance.
