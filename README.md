@@ -384,3 +384,56 @@ ID = 0.333 mA
 ## 🔷 DC Operating Point Screenshot
 
 ![Circuit 2 DC](circuit2_dc.png)
+
+## 🔷 DC Width Tuning 
+
+After initial calculation, practical simulation in LTspice is required to:
+
+- Ensure ID ≈ 0.333 mA  
+- Fix Vout ≈ 0.88 V  
+- Confirm all transistors operate in saturation  
+
+Initial calculated widths may not give exact desired operating point due to:
+
+- Channel length modulation  
+- Model parameter variations  
+- Device non-idealities  
+
+Therefore, widths are tuned as follows:
+
+### 📌 Tuned Width Values (From Simulation)
+
+| Transistor | Type  | Initial Width (µm) | Tuned Width (µm) |
+|------------|--------|-------------------|------------------|
+| M1 | PMOS | 19.7 | ______ |
+| M2 | NMOS | 8.3  | ______ |
+| M3 | NMOS | 8.3  | ______ |
+
+---
+
+### 📌 Achieved DC Operating Point (After Tuning)
+
+ID = ______ mA  
+
+Vout = ______ V  
+
+VS2 = ______ V  
+
+---
+
+### 📌 Saturation Verification
+
+M1: VSD ≥ Vov  ✔  
+
+M2: VDS ≥ Vov  ✔  
+
+M3: VDS ≥ Vov  ✔  
+
+---
+
+### 📌 Justification for Width Tuning
+
+- Width increased → Drain current increases  
+- Width decreased → Drain current decreases  
+- Tuning ensures accurate biasing and maximum output swing  
+- Final widths satisfy power constraint and saturation conditions
