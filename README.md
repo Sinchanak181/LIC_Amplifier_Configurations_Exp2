@@ -735,3 +735,157 @@ ID = 0.333 mA
 | M1 | NMOS | 8.3 |
 | M3 | NMOS | 8.3 |
 | M2 | PMOS | 19.7 |
+
+## 🔷 Circuit 3 Schematic
+
+![Circuit 3 Schematic](circuit3.png)
+
+---
+
+## 🔷 DC Operating Point
+
+![Circuit 3 DC](circuit3_dc.png)
+
+## 🔷 DC Width Tuning (Post Simulation Adjustment)
+
+After initial calculation, LTspice simulation is performed to:
+
+- Ensure ID ≈ 0.333 mA  
+- Fix Vout ≈ 1.05 V  
+- Maintain saturation for all transistors  
+
+Due to channel length modulation and model non-idealities, calculated widths may require tuning.
+
+---
+
+### 📌 Tuned Width Values (From Simulation)
+
+| Transistor | Type | Initial Width (µm) | Tuned Width (µm) |
+|------------|------|-------------------|------------------|
+| M1 | NMOS | 8.3 | ______ |
+| M3 | NMOS | 8.3 | ______ |
+| M2 | PMOS | 19.7 | ______ |
+
+---
+
+### 📌 Achieved DC Operating Point
+
+ID = ______ mA  
+
+Vout = ______ V  
+
+VS1 = ______ V  
+
+---
+
+### 📌 Saturation Check
+
+M1: VDS ≥ Vov ✔  
+M2: VSD ≥ Vov ✔  
+M3: VDS ≥ Vov ✔
+
+## 🔷 Transient Analysis
+
+Transient command used:
+
+.tran 5m
+
+Input applied:
+
+Vin = SINE (1.22 10m 1k)
+
+Where:
+
+DC offset = 1.22 V  
+Amplitude = 10 mV  
+Frequency = 1 kHz  
+
+---
+
+## 🔷 Input Waveform (Vin)
+
+![Circuit 3 Input](circuit3_vin.png)
+
+---
+
+## 🔷 Output Waveform (Vout)
+
+![Circuit 3 Output](circuit3_vout.png)
+
+---
+
+## 🔷 Combined Input & Output
+
+![Circuit 3 Combined](circuit3_combined.png)
+
+## 🔷 Practical Gain (From Transient Analysis)
+
+Vout(max) = ______ V  
+Vout(min) = ______ V  
+
+Vin(max) = ______ V  
+Vin(min) = ______ V  
+
+Vout(pp) = Vout(max) − Vout(min) = ______ V  
+Vin(pp) = Vin(max) − Vin(min) = ______ V  
+
+Av (practical) = Vout(pp) / Vin(pp)
+Av = ______  
+
+Gain (dB) = 20 log(Av)
+Gain (dB) = ______ dB
+
+## 🔷 Theoretical Gain Calculation
+
+gm = 2ID / Vov
+
+ID = 0.333 mA  
+Vov = 0.25 V  
+
+gm = (2 × 0.333 × 10⁻³) / 0.25  
+gm ≈ 2.66 mS  
+
+---
+
+Effective output resistance:
+
+ro(eff) = ro1 || ro2 || ro3  
+ro(eff) = ______ Ω  
+
+Av(theoretical) = gm × ro(eff)
+Av = ______  
+
+Gain (dB) = 20 log(Av)
+Gain (dB) = ______ dB
+
+## 🔷 AC Analysis
+
+AC command used:
+
+.ac dec 10 0.1 100M
+
+---
+
+## 🔷 AC Response
+
+![Circuit 3 AC](circuit3_ac.png)
+
+---
+
+## 🔷 Extracted Parameters
+
+Midband Gain = ______ dB  
+
+3 dB Bandwidth = ______ MHz  
+
+Gain Bandwidth Product (GBP) = ______ MHz  
+
+---
+
+## 🔷 Observation
+
+- Circuit 3 provides higher gain due to increased output resistance.
+- Bandwidth reduces compared to Circuit 1.
+- Gain-bandwidth tradeoff is observed.
+
+  
