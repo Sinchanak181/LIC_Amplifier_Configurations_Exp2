@@ -273,121 +273,102 @@ GBP ≈ 2.13 GHz
 | Assumed Overdrive (Vov) | 0.25 V |
 
 ---
-
 ## 🔷 DC Bias Design
 
 ### 1️⃣ Drain Current
 
-\[
-I_D = \frac{P}{V_{DD}} = \frac{0.5mW}{1.5V}
-\]
+ID = P / VDD  
 
-\[
-I_D = 0.333 mA
-\]
+ID = 0.5 mW / 1.5 V  
+
+ID = 0.333 mA  
 
 ---
 
 ### 2️⃣ NMOS Current Source (M3)
 
-\[
-V_{GS3} = V_{ov} + V_{th}
-\]
+VGS3 = Vov + Vth  
 
-\[
-V_{GS3} = 0.25 + 0.366 = 0.61 V
-\]
+VGS3 = 0.25 + 0.366  
 
-\[
-V_{B2} = 0.61 V
-\]
+VGS3 = 0.61 V  
+
+VB2 = 0.61 V  
 
 To maintain saturation:
 
-\[
-V_{DS3} \ge V_{ov}
-\]
+VDS3 ≥ Vov  
 
-\[
-V_{S2} = 0.25 V
-\]
+Take VS2 = 0.25 V  
 
 ---
 
 ### 3️⃣ NMOS Amplifier (M2)
 
-\[
-V_{GS2} = V_{in} - V_{S2}
-\]
+VGS2 = Vin − VS2  
 
-\[
-0.61 = V_{in} - 0.25
-\]
+0.61 = Vin − 0.25  
 
-\[
-V_{in} = 0.86 V
-\]
+Vin = 0.86 V  
 
 ---
 
 ### 4️⃣ PMOS Load (M1)
 
-\[
-V_{SG1} = V_{ov} + |V_{thp}|
-\]
+VSG1 = Vov + |Vthp|  
 
-\[
-V_{SG1} = 0.25 + 0.39 = 0.64 V
-\]
+VSG1 = 0.25 + 0.39  
 
-\[
-V_{B1} = V_{DD} - V_{SG1}
-\]
+VSG1 = 0.64 V  
 
-\[
-V_{B1} = 1.5 - 0.64 = 0.86 V
-\]
+VB1 = VDD − VSG1  
+
+VB1 = 1.5 − 0.64  
+
+VB1 = 0.86 V  
 
 ---
 
 ### 5️⃣ Output Voltage Range
 
-For M2 saturation:
+For M2 saturation:  
 
-\[
-V_{out} \ge 0.5 V
-\]
+Vout ≥ 0.5 V  
 
-For M1 saturation:
+For M1 saturation:  
 
-\[
-V_{out} \le 1.25 V
-\]
+Vout ≤ 1.25 V  
 
-Therefore,
+Therefore:
 
-\[
-0.5V \le V_{out} \le 1.25V
-\]
+0.5 V ≤ Vout ≤ 1.25 V  
 
 For maximum symmetrical swing:
 
-\[
-V_{out} \approx 0.88 V
-\]
-
----
+Vout ≈ 0.88 V
 
 ## 🔷 Initial Width Calculation
 
-Using:
+Using MOSFET saturation equation:
 
-\[
-I_D = \frac{1}{2} k' \frac{W}{L} (V_{ov})^2
-\]
+ID = (1/2) * k' * (W/L) * (Vov)^2
 
-| Transistor | Type | Initial Width |
-|------------|------|---------------|
+Rearranging for W:
+
+W = (2 * ID * L) / (k' * (Vov)^2)
+
+Where:
+
+k'n = 2.30 × 10⁻⁴ A/V²  
+k'p = 9.73 × 10⁻⁵ A/V²  
+L = 180 nm  
+Vov = 0.25 V  
+ID = 0.333 mA  
+
+### 📌 Calculated Initial Widths
+
+| Transistor | Type  | Width (µm) |
+|------------|--------|------------|
 | M1 | PMOS | 19.7 µm |
 | M2 | NMOS | 8.3 µm |
 | M3 | NMOS | 8.3 µm |
