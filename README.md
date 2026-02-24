@@ -619,3 +619,119 @@ GBP = ______ MHz
 - Gain decreases at high frequency due to parasitic capacitances.
 - Current source load increases output resistance and improves gain.
 - Bandwidth depends on effective output resistance and load capacitance.
+
+# 🚀 CIRCUIT 3  
+## Common Source Amplifier with Diode-Connected NMOS Current Source
+
+---
+
+## 🔷 Design Specifications
+
+| Parameter | Value |
+|------------|--------|
+| VDD | 1.5 V |
+| Power Constraint | ≤ 0.5 mW |
+| Channel Length (L) | 180 nm |
+| Load Capacitor (CL) | 1 pF |
+| Assumed Overdrive (Vov) | 0.25 V |
+
+## 🔷 DC Bias Design
+
+### 1️⃣ Drain Current
+
+ID = P / VDD  
+
+ID = 0.5 mW / 1.5 V  
+
+ID = 0.333 mA  
+
+---
+
+### 2️⃣ Diode-Connected NMOS (M3)
+
+Since M3 is diode-connected:
+
+VGS3 = Vov + Vth  
+
+VGS3 = 0.25 + 0.366  
+
+VGS3 = 0.61 V  
+
+Therefore,
+
+VS1 = 0.61 V  
+
+---
+
+### 3️⃣ NMOS Amplifier (M1)
+
+VGS1 = Vin − VS1  
+
+0.61 = Vin − 0.61  
+
+Vin = 1.22 V  
+
+---
+
+### 4️⃣ PMOS Load (M2)
+
+VSG2 = Vov + |Vthp|  
+
+VSG2 = 0.25 + 0.39  
+
+VSG2 = 0.64 V  
+
+VB1 = VDD − VSG2  
+
+VB1 = 1.5 − 0.64  
+
+VB1 = 0.86 V  
+
+---
+
+### 5️⃣ Output Voltage Range
+
+For M1 saturation:
+
+Vout − 0.61 ≥ 0.25  
+
+Vout ≥ 0.86 V  
+
+For M2 saturation:
+
+1.5 − Vout ≥ 0.25  
+
+Vout ≤ 1.25 V  
+
+Therefore:
+
+0.86 V ≤ Vout ≤ 1.25 V  
+
+For maximum symmetrical swing:
+
+Vout ≈ 1.05 V
+## 🔷 Initial Width Calculation
+
+Using MOSFET saturation equation:
+
+ID = (1/2) × k' × (W/L) × (Vov)^2
+
+Rearranging:
+
+W = (2 × ID × L) / (k' × (Vov)^2)
+
+Where:
+
+k'n = 2.30 × 10⁻⁴ A/V²  
+k'p = 9.73 × 10⁻⁵ A/V²  
+L = 180 nm  
+Vov = 0.25 V  
+ID = 0.333 mA  
+
+### 📌 Calculated Initial Widths
+
+| Transistor | Type | Width (µm) |
+|------------|------|------------|
+| M1 | NMOS | 8.3 |
+| M3 | NMOS | 8.3 |
+| M2 | PMOS | 19.7 |
