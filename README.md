@@ -103,7 +103,7 @@ RS ≈ 598.8 Ω
 
 The above calculations ensure proper DC biasing and saturation region operation.
 ## DC Simulation Results
-![Circuit 1 DC Operating Point](Circuit1_DC_OperatingPoint.png)
+![Circuit 1 DC Operating Point](Circuit1_DC_OperatingPoint.png.jpg)
 
 ### Observations
 - ID(M1) ≈ 0.335 mA  
@@ -140,19 +140,19 @@ Transient command used:
 .tran 5m
 ### Input Waveform (Vin)
 
-![Circuit 1 Input](Circuit1_Vin.png)
+![Circuit 1 Input](Circuit1_Vin.png.jpg)
 
 ---
 
 ### Output Waveform (Vout)
 
-![Circuit 1 Output](Circuit1_Vout.png)
+![Circuit 1 Output](Circuit1_Vout.png.jpg)
 
 ---
 
 ### Combined Input and Output Waveforms
 
-![Circuit 1 Combined Waveform](Circuit1_Vin_Vout.png)
+![Circuit 1 Combined Waveform](Circuit1_Vin_Vout.png.jpg)
 
 ---
 
