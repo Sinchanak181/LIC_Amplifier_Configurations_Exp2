@@ -405,19 +405,19 @@ Therefore, widths are tuned as follows:
 
 | Transistor | Type  | Initial Width (µm) | Tuned Width (µm) |
 |------------|--------|-------------------|------------------|
-| M1 | PMOS | 19.7 | ______ |
-| M2 | NMOS | 8.3  | ______ |
-| M3 | NMOS | 8.3  | ______ |
+| M1 | PMOS | 19.7 | 63.264 |
+| M2 | NMOS | 8.34 | 28.773 |
+| M3 | NMOS | 8.34 | 28.773 |
 
 ---
 
 ### 📌 Achieved DC Operating Point (After Tuning)
 
-ID = ______ mA  
+ID = 0.334 mA  
 
-Vout = ______ V  
+Vout = 1 V  
 
-VS2 = ______ V  
+VS2 = 0.25 V  
 
 ---
 
@@ -478,22 +478,22 @@ Frequency = 1 kHz
 
 From waveform measurements:
 
-Vout(max) = ______ V  
-Vout(min) = ______ V  
+Vout(max) = 1.031 V  
+Vout(min) = 985.67 V  
 
-Vin(max) = ______ V  
-Vin(min) = ______ V  
+Vin(max) = 870 mV  
+Vin(min) = 850.03 mV  
 
-Vout(pp) = Vout(max) − Vout(min) = ______ V  
-Vin(pp) = Vin(max) − Vin(min) = ______ V  
+Vout(pp) = Vout(max) − Vout(min) = _____ V  
+Vin(pp) = Vin(max) − Vin(min) = 0.01997 V  
 
 Av (practical) = Vout(pp) / Vin(pp)
 
-Av = ______  
+Av = 2.269 V/V 
 
 Gain (dB) = 20 log(Av)
 
-Gain (dB) = ______ dB
+Gain (dB) = 7.12 dB
 
 ## 🔷 Theoretical Gain Calculation
 
@@ -585,21 +585,11 @@ This analysis is performed to determine:
 
 From the Bode plot:
 
-Midband Gain = ______ dB  
+Midband Gain = 7.25 dB  
 
-3 dB Gain = (Midband Gain − 3) = ______ dB  
+3 dB Gain = (Midband Gain − 3) = 4.25 dB  
 
-Bandwidth (BW) = fH  ≈ ______ MHz  
-
----
-
-## 🔷 Gain in Linear Scale
-
-Av (linear) = 10^(Gain_dB / 20)
-
-Av = 10^( ______ / 20 )
-
-Av = ______  
+Bandwidth (BW) = fH  ≈ 245.54 MHz  
 
 ---
 
@@ -607,9 +597,9 @@ Av = ______
 
 GBP = Av × BW  
 
-GBP = ______ × ______ MHz  
+GBP = 2.269 × 245.54 MHz  
 
-GBP = ______ MHz  
+GBP = 557.13 MHz  
 
 ---
 
@@ -751,7 +741,7 @@ ID = 0.333 mA
 After initial calculation, LTspice simulation is performed to:
 
 - Ensure ID ≈ 0.333 mA  
-- Fix Vout ≈ 1.05 V  
+- Fix Vout ≈ 1.36 V  
 - Maintain saturation for all transistors  
 
 Due to channel length modulation and model non-idealities, calculated widths may require tuning.
@@ -762,19 +752,19 @@ Due to channel length modulation and model non-idealities, calculated widths may
 
 | Transistor | Type | Initial Width (µm) | Tuned Width (µm) |
 |------------|------|-------------------|------------------|
-| M1 | NMOS | 8.3 | ______ |
-| M3 | NMOS | 8.3 | ______ |
-| M2 | PMOS | 19.7 | ______ |
+| M1 | NMOS | 8.34 | 62.55 |
+| M3 | NMOS | 8.34 | 62.55 |
+| M2 | PMOS | 19.77 | 79.08 |
 
 ---
 
 ### 📌 Achieved DC Operating Point
 
-ID = ______ mA  
+ID = 0.333 mA  
 
-Vout = ______ V  
+Vout = 1.36 V  
 
-VS1 = ______ V  
+VS1 = 0.61 V  
 
 ---
 
@@ -820,20 +810,20 @@ Frequency = 1 kHz
 
 ## 🔷 Practical Gain (From Transient Analysis)
 
-Vout(max) = ______ V  
-Vout(min) = ______ V  
+Vout(max) = 1.390 V  
+Vout(min) = 1.313 V  
 
-Vin(max) = ______ V  
-Vin(min) = ______ V  
+Vin(max) = 1.229 V  
+Vin(min) = 1.210 V  
 
-Vout(pp) = Vout(max) − Vout(min) = ______ V  
-Vin(pp) = Vin(max) − Vin(min) = ______ V  
+Vout(pp) = Vout(max) − Vout(min) = 0.077 V  
+Vin(pp) = Vin(max) − Vin(min) = 0.019 V  
 
 Av (practical) = Vout(pp) / Vin(pp)
-Av = ______  
+Av = 4.052 V/V 
 
 Gain (dB) = 20 log(Av)
-Gain (dB) = ______ dB
+Gain (dB) = 12.15 dB
 
 ## 🔷 Theoretical Gain Calculation
 
@@ -874,11 +864,11 @@ AC command used:
 
 ## 🔷 Extracted Parameters
 
-Midband Gain = ______ dB  
+Midband Gain = 11.23 dB  
+3 dB Gain = (Midband Gain − 3) = 8.25 dB  
+3 dB Bandwidth = 1.178 GHz  
 
-3 dB Bandwidth = ______ MHz  
-
-Gain Bandwidth Product (GBP) = ______ MHz  
+Gain Bandwidth Product (GBP) = 4.773 GHz  
 
 ---
 
@@ -888,65 +878,146 @@ Gain Bandwidth Product (GBP) = ______ MHz
 - Bandwidth reduces compared to Circuit 1.
 - Gain-bandwidth tradeoff is observed.
 
-# 🔷 Final Comparison of Three Amplifier Configurations
+# 🔷 Comparison and Performance Evaluation of Three Circuits
 
-## 📊 Performance Comparison Table
+## 📊 Summary of Simulation Results
 
-| Parameter | Circuit 1 <br> (PMOS Active Load + RS) | Circuit 2 <br> (NMOS Current Source) | Circuit 3 <br> (Diode-Connected Source) |
-|------------|------------------------------------------|----------------------------------------|-------------------------------------------|
-| DC Drain Current (ID) | ______ mA | ______ mA | ______ mA |
-| DC Output Voltage (Vout) | ______ V | ______ V | ______ V |
-| Practical Gain (Av) | ______ | ______ | ______ |
-| Gain (dB) | ______ dB | ______ dB | ______ dB |
-| Theoretical Gain | ______ | ______ | ______ |
-| 3 dB Bandwidth | ______ MHz | ______ MHz | ______ MHz |
-| Unity Gain Bandwidth (UGB) | ______ MHz | ______ MHz | ______ MHz |
-| Output Resistance | Moderate | High | Very High |
-| Voltage Swing | High | Moderate | Limited |
-| Circuit Complexity | Medium | Medium | High |
-| Power Consumption | ≤ 0.5 mW | ≤ 0.5 mW | ≤ 0.5 mW |
+| Parameter | Circuit 1 <br> (PMOS Load + RS) | Circuit 2 <br> (NMOS Current Source) | Circuit 3 <br> (Diode-Connected M3) |
+|------------|----------------------------------|----------------------------------------|--------------------------------------|
+| DC Current (ID) | 0.335 mA | 0.333 mA | 0.333 mA |
+| DC Output (Vout) | 0.94 V | 1.008 V | 1.36 V |
+| Practical Gain (Av) | 9.723 V/V | 2.269 V/V | 4.052 V/V |
+| Gain (dB) | 19.75 dB | 7.12 dB | 12.15 dB |
+| Bandwidth | 219.12 MHz | 245.54 MHz | 1.178 GHz |
+| Gain Bandwidth Product | ≈ 2.13 GHz | 557 MHz | 4.773 GHz |
 
 ---
 
-## 🔷 Comparative Analysis
+# 🔷 Detailed Comparative Analysis
 
-### 🔹 Circuit 1
-- Uses source degeneration resistor.
-- Provides stable biasing.
-- Moderate gain due to source degeneration.
-- Good output swing.
-- Bandwidth relatively higher.
+## 1️⃣ Gain Comparison
 
-### 🔹 Circuit 2
-- Uses NMOS current source load.
-- Higher gain compared to Circuit 1.
-- Increased output resistance.
-- Reduced bandwidth compared to Circuit 1.
-- Better gain–bandwidth tradeoff.
+### Highest Gain: Circuit 1
 
-### 🔹 Circuit 3
-- Uses diode-connected NMOS current source.
-- Highest output resistance.
-- Highest theoretical gain.
-- Reduced output swing due to stacked transistors.
-- Narrower bandwidth due to higher gain.
+Circuit 1 shows the highest gain (9.723 V/V).
+
+Reason:
+- Proper biasing with source degeneration resistor improves stability.
+- Effective transconductance (gm) is sufficiently high.
+- Output node parasitic capacitance is moderate.
+- Width tuning increased gm without excessively increasing output capacitance.
 
 ---
 
-## 🔷 Final Validation and Conclusion
+### Lowest Gain: Circuit 2
 
-- All three circuits satisfy the power constraint (≤ 0.5 mW).
-- All transistors operate in saturation region.
-- Gain increases from Circuit 1 → Circuit 2 → Circuit 3.
-- Bandwidth decreases as gain increases (Gain–Bandwidth Tradeoff).
-- Circuit 3 provides maximum gain but lowest bandwidth.
-- Circuit 1 provides best output swing.
-- Circuit 2 offers balanced performance.
+Circuit 2 shows the lowest gain (2.269 V/V).
 
-Therefore,
+Reason:
+- Large width tuning (especially PMOS) increased parasitic capacitances.
+- Increased output capacitance reduced effective gain.
+- Current source loading reduced voltage gain.
+- Output resistance was not sufficiently high compared to theoretical assumption.
 
-✔ Circuit 1 → Best for larger swing  
-✔ Circuit 2 → Balanced design  
-✔ Circuit 3 → High-gain applications  
+Thus practical gain became lower than expected theoretical gain.
 
-This validates the theoretical expectations and simulation results.  
+---
+
+### Moderate Gain: Circuit 3
+
+Circuit 3 gain = 4.052 V/V.
+
+Reason:
+- Diode-connected transistor (M3) behaves as low dynamic resistance.
+- This reduces overall output resistance.
+- Reduced output resistance directly reduces voltage gain.
+- However gm is increased due to width tuning.
+
+Therefore gain is moderate — not highest.
+
+---
+
+# 🔷 Bandwidth Comparison
+
+### Highest Bandwidth: Circuit 3 (1.178 GHz)
+
+Reason:
+- Diode-connected M3 reduces effective output resistance.
+- Lower output resistance shifts pole to higher frequency.
+- Large gm increases speed.
+- Hence dominant pole frequency increases significantly.
+
+Therefore bandwidth becomes maximum.
+
+---
+
+### Moderate Bandwidth: Circuit 2 (245 MHz)
+
+- Higher capacitance due to large device widths.
+- Output node heavily loaded.
+- Bandwidth moderate.
+
+---
+
+### Lowest Bandwidth: Circuit 1 (219 MHz)
+
+- Source degeneration reduces gm.
+- Moderate output resistance.
+- Slightly lower pole frequency.
+
+---
+
+# 🔷 Gain–Bandwidth Tradeoff Validation
+
+From results:
+
+- Circuit 1 → Highest Gain, Moderate Bandwidth
+- Circuit 3 → Moderate Gain, Highest Bandwidth
+- Circuit 2 → Lowest Gain, Moderate Bandwidth
+
+This clearly demonstrates the practical gain–bandwidth tradeoff.
+
+Higher gain stages show reduced bandwidth.
+Lower output resistance increases bandwidth.
+
+---
+
+# 🔷 Practical vs Theoretical Variation – Reasons
+
+Differences between theoretical and simulated results occur due to:
+
+1. Channel length modulation (finite ro)
+2. Parasitic capacitances (Cgs, Cgd, Cdb)
+3. Width-dependent capacitance increase
+4. Non-ideal current source behavior
+5. Bias point shift during tuning
+6. Device mismatch and second-order effects
+7. Load capacitance (1 pF) effect
+
+Theoretical calculations assume ideal infinite output resistance and neglect parasitics, whereas LTspice includes complete device models.
+
+Hence practical gain and bandwidth differ from theoretical estimation.
+
+---
+
+# 🔷 Conclusion 
+
+All three circuits satisfy:
+
+✔ Power constraint (≤ 0.5 mW)  
+✔ Saturation region operation  
+✔ Required bias conditions  
+
+Performance-wise:
+
+• Circuit 1 → Best voltage gain  
+• Circuit 3 → Highest speed (bandwidth)  
+• Circuit 2 → Lower gain due to capacitive loading  
+
+Thus, the choice of amplifier depends on application:
+
+- For high gain → Circuit 1  
+- For high speed → Circuit 3  
+- For moderate balanced design → Circuit 2  
+
+This validates the design methodology and simulation results.
