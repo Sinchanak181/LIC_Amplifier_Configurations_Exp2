@@ -181,42 +181,71 @@ Av(dB) = 19.75 dB
 
 ---
 
-### 2️⃣ Theoretical Gain
+##  Theoretical Gain Calculation
 
 For CS amplifier with PMOS active load and source degeneration:
 
-Av = − gm (ro1 || ro2) / (1 + gm RS)
+Av = − gm (ro1 || ro2) / (1 + gm Rs)
 
-gm = 2ID / Vov  
-gm = (2 × 0.335 mA) / 0.25  
-gm = 2.68 mS  
+---
+### 1️⃣ Transconductance (gm)
 
-Assuming λ ≈ 0.2 V⁻¹ (180nm short channel)
+gm = 2ID / VOV  
 
-ro1 = ro2 ≈ 14.9 kΩ  
+gm = 2 × (0.334 × 10⁻³) / 0.25  
 
-ro(eq) = 7.45 kΩ  
+gm = 2.672 × 10⁻³ S  
 
-gmRS = 2.68×10⁻³ × 598.8 ≈ 1.60  
+gm ≈ 2.67 mS  
 
-Av (theoretical) ≈ 7.67  
+---
+### 2️⃣ Output Resistance (ro)
+
+ro = 1 / (λ ID)
+
+Assuming λ = 0.1 V⁻¹ (180 nm technology)
+
+ro1 = 1 / (0.1 × 0.334 × 10⁻³)
+
+ro1 ≈ 29.94 kΩ  
+
+Since ro1 ≈ ro2,
+
+ro(eq) = ro1 || ro2  
+
+ro(eq) ≈ 14.97 kΩ  
+
+---
+### 3️⃣ Voltage Gain
+
+Av = − (2.672 × 10⁻³ × 14.97 × 10³) / (1 + 2.672 × 10⁻³ × 598.8)
+
+Av ≈ −15.38 V/V  
 
 Gain (dB):
 
-Av(dB) ≈ 17.69 dB  
+Av(dB) = 20 log(15.38)
 
----
+Av(dB) ≈ 23.74 dB
 
-### 3️⃣ Gain Comparison
+**Theoretical Gain (Linear)** = 15.38 V/V  
+**Theoretical Gain (dB)** = 23.74 dB  
 
-| Type        | Gain (V/V) | Gain (dB) |
-|------------|------------|-----------|
-| Theoretical | 7.67      | 17.69 dB  |
-| Practical   | 9.723     | 19.75 dB  |
+**Practical Gain (Transient)** = 9.723 V/V  
+**Practical Gain (dB)** = 19.75 dB
 
-The difference occurs due to bias-dependent output resistance and accurate device modeling in LTspice.
-Av(dB) ≈ 17.69 dB
----
+##  Reason for Variation Between Theoretical and Practical Gain
+
+The theoretical gain assumes ideal device operation with constant output resistance and neglects higher-order effects.
+
+However, in LTspice simulation:
+
+• Channel length modulation affects output resistance.  
+• Parasitic capacitances influence small-signal behavior.  
+• Bias-dependent variation in gm occurs.  
+• Source degeneration reduces effective gain.  
+
+Hence, practical gain (19.75 dB) is lower than theoretical gain (23.74 dB).
 
 ## AC Analysis
 
@@ -250,19 +279,19 @@ GBP = Av × Bandwidth
 
 GBP = 9.72 × 219.12 MHz  
 GBP ≈ 2.13 GHz
-### Observation
 
+### Observation
 - Amplifier shows flat midband gain region.
 - Gain decreases at high frequency due to parasitic capacitances.
 - Bandwidth ≈ 219 MHz.
-- Gain-Bandwidth Product ≈ 2.13 GHz.
+- Bandwidth Product ≈ 2.13 GHz.
 
-# 🚀 CIRCUIT 2  
+#  CIRCUIT 2  
 ## Common Source Amplifier with NMOS Current Source Load
 
 ---
 
-## 🔷 Design Specifications
+##  Design Specifications
 
 | Parameter | Value |
 |------------|--------|
@@ -273,9 +302,9 @@ GBP ≈ 2.13 GHz
 | Assumed Overdrive (Vov) | 0.25 V |
 
 ---
-## 🔷 DC Bias Design
+##  DC Bias Design
 
-### 1️⃣ Drain Current
+### Drain Current
 
 ID = P / VDD  
 
@@ -285,7 +314,7 @@ ID = 0.333 mA
 
 ---
 
-### 2️⃣ NMOS Current Source (M3)
+###  NMOS Current Source (M3)
 
 VGS3 = Vov + Vth  
 
@@ -303,7 +332,7 @@ Take VS2 = 0.25 V
 
 ---
 
-### 3️⃣ NMOS Amplifier (M2)
+###  NMOS Amplifier (M2)
 
 VGS2 = Vin − VS2  
 
@@ -313,7 +342,7 @@ Vin = 0.86 V
 
 ---
 
-### 4️⃣ PMOS Load (M1)
+###  PMOS Load (M1)
 
 VSG1 = Vov + |Vthp|  
 
@@ -329,7 +358,7 @@ VB1 = 0.86 V
 
 ---
 
-### 5️⃣ Output Voltage Range
+###  Output Voltage Range
 
 For M2 saturation:  
 
@@ -347,7 +376,7 @@ For maximum symmetrical swing:
 
 Vout ≈ 0.88 V
 
-## 🔷 Initial Width Calculation
+##  Initial Width Calculation
 
 Using MOSFET saturation equation:
 
