@@ -289,7 +289,9 @@ GBP ≈ 2.13 GHz
 #  CIRCUIT 2  
 ## Common Source Amplifier with NMOS Current Source Load
 
----
+## 🔷 Circuit Schematic
+
+![Circuit 2 Schematic](circuit2.png)
 
 ##  Design Specifications
 
@@ -401,12 +403,6 @@ ID = 0.333 mA
 | M1 | PMOS | 19.7 µm |
 | M2 | NMOS | 8.3 µm |
 | M3 | NMOS | 8.3 µm |
-
----
-
-## 🔷 Circuit Schematic
-
-![Circuit 2 Schematic](circuit2.png)
 
 ---
 
@@ -642,7 +638,10 @@ GBP = 557.13 MHz
 # 🚀 CIRCUIT 3  
 ## Common Source Amplifier with Diode-Connected NMOS Current Source
 
----
+## 🔷 Circuit 3 Schematic
+
+![Circuit 3 Schematic](circuit3.png)
+
 
 ## 🔷 Design Specifications
 
@@ -754,10 +753,6 @@ ID = 0.333 mA
 | M1 | NMOS | 8.3 |
 | M3 | NMOS | 8.3 |
 | M2 | PMOS | 19.7 |
-
-## 🔷 Circuit 3 Schematic
-
-![Circuit 3 Schematic](circuit3.png)
 
 ---
 
