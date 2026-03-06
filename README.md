@@ -187,7 +187,6 @@ For CS amplifier with PMOS active load and source degeneration:
 
 Av = − gm (ro1 || ro2) / (1 + gm Rs)
 
----
 ### 1️⃣ Transconductance (gm)
 
 gm = 2ID / VOV  
@@ -360,23 +359,55 @@ VB1 = 0.86 V
 
 ---
 
-###  Output Voltage Range
+#### Output Voltage Range (Saturation Condition Method)
 
-For M2 saturation:  
+For proper amplifier operation, all MOSFETs must remain in **saturation region**.
 
-Vout ≥ 0.5 V  
+#### NMOS (M2) Saturation Condition
 
-For M1 saturation:  
+For NMOS:
 
-Vout ≤ 1.25 V  
+VDS ≥ VOV
 
-Therefore:
+VDS2 = Vout − VS2
 
-0.5 V ≤ Vout ≤ 1.25 V  
+Since source of M2 is connected to ground,
 
-For maximum symmetrical swing:
+VS2 = 0 V
 
-Vout ≈ 0.88 V
+Therefore,
+
+Vout − 0 ≥ 0.25
+
+Vout ≥ 0.5 V
+
+#### PMOS (M1) Saturation Condition
+
+For PMOS:
+
+VSD ≥ VOV
+
+VSD1 = VDD − Vout
+
+1.5 − Vout ≥ 0.25
+
+Vout ≤ 1.25 V
+
+### Allowed Output Voltage Range
+
+0.5 V ≤ Vout ≤ 1.25 V
+
+### Simulation Result
+
+From LTspice DC operating point simulation:
+
+Vout ≈ 1.0 V
+
+This value lies within the allowable saturation range:
+
+0.5 V ≤ 1.0 V ≤ 1.25 V
+
+Hence both NMOS and PMOS transistors operate in **saturation region**, ensuring correct amplifier operation.
 
 ##  Initial Width Calculation
 
