@@ -197,7 +197,6 @@ gm = 2.672 × 10⁻³ S
 
 gm ≈ 2.67 mS  
 
----
 ### 2️⃣ Output Resistance (ro)
 
 ro = 1 / (λ ID)
@@ -214,7 +213,6 @@ ro(eq) = ro1 || ro2
 
 ro(eq) ≈ 14.97 kΩ  
 
----
 ### 3️⃣ Voltage Gain
 
 Av = − (2.672 × 10⁻³ × 14.97 × 10³) / (1 + 2.672 × 10⁻³ × 598.8)
@@ -540,7 +538,6 @@ Vout(min) = 985.67 V
 Vin(max) = 870 mV  
 Vin(min) = 850.03 mV  
 
-Vout(pp) = Vout(max) − Vout(min) = _____ V  
 Vin(pp) = Vin(max) − Vin(min) = 0.01997 V  
 
 Av (practical) = Vout(pp) / Vin(pp)
@@ -554,68 +551,73 @@ Gain (dB) = 7.12 dB
 ## 🔷 Theoretical Gain Calculation
 
 For Common Source amplifier with current source load:
+Av = gm (ro1 || ro2) / (1 + gm ro3)
 
-Av = - gm2 × (ro1 || ro2)
-
----
-
-### Step 1: Calculate gm2
+### Step 1: Transconductance
 
 gm = 2ID / Vov
-
 ID = 0.333 mA  
-Vov = 0.25 V  
+Vov = 0.25 V
 
 gm = (2 × 0.333 × 10⁻³) / 0.25  
 
-gm = 0.002664 S  
-
-gm ≈ 2.66 mS  
-
----
+gm = 2.67 × 10⁻³ S  
+gm = **2.67 mS**
 
 ### Step 2: Output Resistance
 
-ro = 1 / (λ × ID)
+ro = 1 / (λ ID)
 
-(Use λ value from model file or datasheet)
+For NMOS:
 
-Assume:
+λ = 0.1 V⁻¹
 
-ro1 = ______ Ω  
-ro2 = ______ Ω  
+ro1 = ro3 = 1 / (0.1 × 0.334 × 10⁻³)
 
-Effective output resistance:
+ro1 = ro3 = **29.94 kΩ**
 
-ro(eff) = ro1 || ro2  
+For PMOS:
 
-ro(eff) = ______ Ω  
+λ = 0.12 V⁻¹
 
----
+ro2 = 1 / (0.12 × 0.334 × 10⁻³)
 
-### Step 3: Theoretical Gain
+ro2 = **24.95 kΩ**
 
-Av(theoretical) = gm × ro(eff)
+### Step 3: Effective Output Resistance
 
-Av = 2.66 × 10⁻³ × ______  
+ro(eff) = ro1 || ro2
 
-Av = ______  
+ro(eff) = (29.94 × 24.95) / (29.94 + 24.95)
 
-Gain (dB) = 20 log(Av)
+ro(eff) = **13.80 kΩ**
 
-Gain (dB) = ______ dB
+### Step 4: Voltage Gain
+
+Av = gm (ro1 || ro2) / (1 + gm ro3)
+
+Av = (2.67 × 10⁻³ × 13.80 × 10³) / (1 + 2.67 × 10⁻³ × 29.94 × 10³)
+
+Av = **0.448 V/V**
+
+### Gain in dB
+
+Av(dB) = 20 log(Av)
+
+Av(dB) = **−6.95 dB**
 
 ## 🔷 Validation: Reason for Variation Between Theoretical and Practical Gain
 
-- Theoretical calculation assumes ideal square-law MOSFET behavior.
-- Channel Length Modulation reduces effective output resistance (ro).
-- Short-channel effects are significant in 180nm technology.
-- Mobility degradation lowers effective transconductance (gm).
-- Parasitic capacitances are included in SPICE model but ignored in hand calculations.
-- Bias-dependent parameters (gm, ro) vary slightly during simulation.
-- Source/body effect slightly modifies threshold voltage.
+The difference between theoretical and simulated gain occurs due to several non-ideal effects present in practical CMOS devices:
 
-Thus, practical gain differs slightly from theoretical value due to real device non-idealities in CMOS technology.
+- Theoretical calculations assume ideal square-law MOSFET behavior.
+- Channel length modulation reduces the effective output resistance (ro).
+- Short-channel effects are significant in 180 nm technology.
+- Parasitic capacitances present in the MOSFET model affect the gain.
+- Mobility degradation slightly reduces the transconductance (gm).
+- Bias-dependent parameters (gm and ro) vary slightly during simulation.
+
+Thus, the practical gain obtained from LTspice simulation differs slightly from the theoretical gain due to real device non-idealities in CMOS technology.
 
 ## 🔷 AC Analysis
 
@@ -738,27 +740,67 @@ VB1 = 0.86 V
 
 ---
 
-### 5️⃣ Output Voltage Range
+### 🔹 Output Voltage Range
 
-For M1 saturation:
+For proper operation, all transistors must remain in **saturation region**.
 
-Vout − 0.61 ≥ 0.25  
+#### For NMOS (M2) Saturation
 
-Vout ≥ 0.86 V  
+For saturation condition:
 
-For M2 saturation:
+VDS2 ≥ VOV
 
-1.5 − Vout ≥ 0.25  
+VDS2 = Vout − VS2
 
-Vout ≤ 1.25 V  
+Since
 
-Therefore:
+VS2 = 0.25 V
 
-0.86 V ≤ Vout ≤ 1.25 V  
+Therefore,
 
-For maximum symmetrical swing:
+Vout − 0.25 ≥ 0.25
 
-Vout ≈ 1.05 V
+Vout ≥ 0.50 V
+
+#### For PMOS (M1) Saturation
+
+For saturation condition:
+
+VSD1 ≥ VOV
+
+VSD1 = VDD − Vout
+
+1.5 − Vout ≥ 0.25
+
+Vout ≤ 1.25 V
+
+### Allowed Output Voltage Range
+
+0.5 V ≤ Vout ≤ 1.25 V
+
+### From Calculations
+
+From biasing calculations:
+
+VGS3 = 0.61 V
+
+Therefore,
+
+Vout ≈ VDD + VGS3 − VGS1
+
+Vout ≈ 0.75 + 0.61
+
+Vout ≈ **1.36 V**
+
+### From LTspice Simulation
+
+From DC operating point simulation:
+
+Vout ≈ **1.36 V**
+
+Thus, the circuit operates correctly with the designed biasing.
+
+
 ## 🔷 Initial Width Calculation
 
 Using MOSFET saturation equation:
@@ -880,29 +922,6 @@ Av = 4.052 V/V
 Gain (dB) = 20 log(Av)
 Gain (dB) = 12.15 dB
 
-## 🔷 Theoretical Gain Calculation
-
-gm = 2ID / Vov
-
-ID = 0.333 mA  
-Vov = 0.25 V  
-
-gm = (2 × 0.333 × 10⁻³) / 0.25  
-gm ≈ 2.66 mS  
-
----
-
-Effective output resistance:
-
-ro(eff) = ro1 || ro2 || ro3  
-ro(eff) = ______ Ω  
-
-Av(theoretical) = gm × ro(eff)
-Av = ______  
-
-Gain (dB) = 20 log(Av)
-Gain (dB) = ______ dB
-
 ## 🔷 AC Analysis
 
 AC command used:
@@ -910,7 +929,6 @@ AC command used:
 .ac dec 10 0.1 100M
 
 ---
-
 ## 🔷 AC Response
 
 ![Circuit 3 AC](circuit3_ac.png)
