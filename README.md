@@ -357,11 +357,11 @@ VB1 = 0.86 V
 
 ---
 
-### Output Voltage Range (Saturation Condition Method)
+## Output Voltage Range (Saturation Condition Method)
 
 For proper amplifier operation, all MOSFETs must remain in **saturation region**.
 
-### NMOS (M2) Saturation Condition
+#### NMOS (M2) Saturation Condition
 
 For NMOS:
 
@@ -379,7 +379,7 @@ Vout − 0 ≥ 0.25
 
 Vout ≥ 0.5 V
 
-### PMOS (M1) Saturation Condition
+#### PMOS (M1) Saturation Condition
 
 For PMOS:
 
@@ -391,11 +391,11 @@ VSD1 = VDD − Vout
 
 Vout ≤ 1.25 V
 
-### Allowed Output Voltage Range
+#### Allowed Output Voltage Range
 
 0.5 V ≤ Vout ≤ 1.25 V
 
-### Simulation Result
+#### Simulation Result
 
 From LTspice DC operating point simulation:
 
@@ -740,7 +740,7 @@ VB1 = 0.86 V
 
 ---
 
-### 🔹 Output Voltage Range
+### 🔷 Output Voltage Range
 
 For proper operation, all transistors must remain in **saturation region**.
 
@@ -774,11 +774,11 @@ VSD1 = VDD − Vout
 
 Vout ≤ 1.25 V
 
-### Allowed Output Voltage Range
+#### Allowed Output Voltage Range
 
 0.5 V ≤ Vout ≤ 1.25 V
 
-### From Calculations
+#### From Calculations
 
 From biasing calculations:
 
@@ -792,7 +792,7 @@ Vout ≈ 0.75 + 0.61
 
 Vout ≈ **1.36 V**
 
-### From LTspice Simulation
+#### From LTspice Simulation
 
 From DC operating point simulation:
 
