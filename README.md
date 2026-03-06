@@ -187,7 +187,7 @@ For CS amplifier with PMOS active load and source degeneration:
 
 Av = − gm (ro1 || ro2) / (1 + gm Rs)
 
-## 1️⃣ Transconductance (gm)
+#### Transconductance (gm)
 
 gm = 2ID / VOV  
 
@@ -197,7 +197,7 @@ gm = 2.672 × 10⁻³ S
 
 gm ≈ 2.67 mS  
 
-## 2️⃣ Output Resistance (ro)
+#### Output Resistance (ro)
 
 ro = 1 / (λ ID)
 
@@ -213,7 +213,7 @@ ro(eq) = ro1 || ro2
 
 ro(eq) ≈ 14.97 kΩ  
 
-## 3️⃣ Voltage Gain
+#### Voltage Gain
 
 Av = − (2.672 × 10⁻³ × 14.97 × 10³) / (1 + 2.672 × 10⁻³ × 598.8)
 
@@ -361,7 +361,7 @@ VB1 = 0.86 V
 
 For proper amplifier operation, all MOSFETs must remain in **saturation region**.
 
-## NMOS (M2) Saturation Condition
+### NMOS (M2) Saturation Condition
 
 For NMOS:
 
@@ -379,7 +379,7 @@ Vout − 0 ≥ 0.25
 
 Vout ≥ 0.5 V
 
-## PMOS (M1) Saturation Condition
+### PMOS (M1) Saturation Condition
 
 For PMOS:
 
@@ -391,11 +391,11 @@ VSD1 = VDD − Vout
 
 Vout ≤ 1.25 V
 
-## Allowed Output Voltage Range
+### Allowed Output Voltage Range
 
 0.5 V ≤ Vout ≤ 1.25 V
 
-## Simulation Result
+### Simulation Result
 
 From LTspice DC operating point simulation:
 
